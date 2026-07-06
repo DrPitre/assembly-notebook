@@ -1,10 +1,12 @@
 # Build artifacts
 *.o
 *.profraw
-*.bin.list
-*.bin.map
+*.list
+*.map
 
 # Compiled binaries (match Makefile TARGET names, not source files)
 arm64/hello/hello
 m6809/hello/hello.bin
 m6809/hello/hello.dsk
+m6809/hello-os9/hello
+m6809/hello-os9/hello.dsk

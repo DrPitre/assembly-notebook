@@ -18,7 +18,7 @@ $(DSK): $(TARGET)
 	$(DECB) copy -2 -b $(TARGET) "$(DSK),HELLO.BIN"
 
 run: $(DSK)
-	$(MAME) $(MACHINE) -skip_gameinfo -flop1 $(DSK) -autoboot_command 'LOADM"HELLO"\n' -autoboot_delay 2
+	$(MAME) $(MACHINE) -skip_gameinfo -flop1 $(DSK) -autoboot_command 'LOADM"HELLO":EXEC\n' -autoboot_delay 2
 
 clean:
 	rm -f $(TARGET) $(DSK) *.list *.map

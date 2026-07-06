@@ -1,0 +1,6 @@
+# Build artifacts
+*.o
+*.profraw
+
+# Compiled binaries (match Makefile TARGET names, not source files)
+arm64/hello/hello

@@ -4,7 +4,7 @@ TARGET  = hello
 SRC     = hello.s
 OBJ     = hello.o
 
-.PHONY: all clean run
+.PHONY: all clean run disas
 
 all: $(TARGET)
 
@@ -16,6 +16,9 @@ $(TARGET): $(OBJ)
 
 run: $(TARGET)
 	./$(TARGET)
+
+disas: $(OBJ)
+	otool -tvV $(OBJ)
 
 clean:
 	rm -f $(OBJ) $(TARGET)

@@ -6,7 +6,7 @@ _start:
     mov x0, #1                 // stdout file descriptor
     adrp x1, msg@PAGE          // load page address of msg
     add x1, x1, msg@PAGEOFF    // add page offset
-    mov x2, #1                // message length
+    mov x2, #14                // message length
     mov x16, #4                // syscall number for write
     svc #0x80                  // make syscall
 
@@ -15,13 +15,7 @@ _start:
     svc #0x80                  // make syscall
 
 .data
-    .ascii "Hello, warld!\n"
-    .ascii "Hello, warld!\n"
-    .ascii "Hello, warld!\n"
-    .ascii "Hello, warld!\n"
-    .ascii "Hello, warld!\n"
-    .ascii "Hello, warld!\n"
-    .ascii "Hello, warld!\n"
-    .ascii "Hello, warld!\n"
 msg:
-    .ascii "Hello, warld!\n"
+    .ascii "Hello, world!\n"
+msg2:
+    .ascii "Hello, world!\n"

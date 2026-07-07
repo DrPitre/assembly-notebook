@@ -7,9 +7,14 @@
 # Compiled binaries (match Makefile TARGET names, not source files)
 arm64/hello/hello
 x86/hello/hello
+ppc/hello/hello
 m6809/hello/hello.bin
 m6809/hello/hello.dsk
 m6809/hello-os9/hello
 m6809/hello-os9/hello.dsk
 m6809/hello-os9/helloc
 m6809/hello-os9/helloc.dsk
+
+# LLVM intermediate output (clang -S / -emit-llvm), not source
+m6809/hello-os9/hello.ll
+m6809/hello-os9/hello.s

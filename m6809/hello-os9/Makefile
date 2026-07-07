@@ -26,7 +26,7 @@ $(TARGET): $(SRC)
 	$(AS) --pragma=pcaspcr,nosymbolcase,condundefzero,undefextern,dollarnotlocal,noforwardrefmax -I$(NITROS9DIR)/defs --format=os9 -o $(TARGET) $(SRC)
 
 $(CTARGET): $(CSRC)
-	$(CLANG) -target mc6809-unknown-os9 $(CSRC) -o $(CTARGET)
+	$(CLANG) -target mc6809-unknown-os9 -O2 $(CSRC) -o $(CTARGET)
 
 $(DSK): $(TARGET) $(BOOTDSK)
 	cp $(BOOTDSK) $(DSK)

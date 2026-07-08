@@ -10,10 +10,13 @@ x86/hello/hello
 ppc/hello/hello
 m6809/hello/hello.bin
 m6809/hello/hello.dsk
+m6809/hello/helloc.bin
+m6809/hello/helloc.elf
+m6809/hello/helloc.raw
+m6809/hello/helloc.s
 m6809/hello-os9/hello
 m6809/hello-os9/hello.dsk
 m6809/hello-os9/helloc
-m6809/hello-os9/helloc.dsk
 
 # LLVM intermediate output (clang -S / -emit-llvm), not source
 m6809/hello-os9/hello.ll

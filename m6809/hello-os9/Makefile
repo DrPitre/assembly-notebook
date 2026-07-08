@@ -11,7 +11,6 @@ LLVMDIR   = $(HOME)/Projects/llvm-mc6809/build
 CLANG     = $(LLVMDIR)/bin/clang
 CTARGET   = helloc
 CSRC      = hello.c
-CDSK      = helloc.dsk
 
 # NitrOS-9/6809 Level 1 minimal boot disk, built via:
 #   cd nitros9/recipes/coco/floppy && make MINIMAL=1
@@ -28,21 +27,18 @@ $(TARGET): $(SRC)
 $(CTARGET): $(CSRC)
 	$(CLANG) -target mc6809-unknown-os9 -O2 $(CSRC) -o $(CTARGET)
 
-$(DSK): $(TARGET) $(BOOTDSK)
+$(DSK): $(TARGET) $(CTARGET) $(BOOTDSK)
 	cp $(BOOTDSK) $(DSK)
 	$(OS9) copy -r $(TARGET) "$(DSK),CMDS/HELLO"
 	$(OS9) attr -q -epepr "$(DSK),CMDS/HELLO"
-
-$(CDSK): $(CTARGET) $(BOOTDSK)
-	cp $(BOOTDSK) $(CDSK)
-	$(OS9) copy -r $(CTARGET) "$(CDSK),CMDS/HELLOC"
-	$(OS9) attr -q -epepr "$(CDSK),CMDS/HELLOC"
+	$(OS9) copy -r $(CTARGET) "$(DSK),CMDS/HELLOC"
+	$(OS9) attr -q -epepr "$(DSK),CMDS/HELLOC"
 
 run: $(DSK)
 	$(MAME) $(MACHINE) -skip_gameinfo -autoboot_delay 5 -autoboot_command 'DOS\n' -ext fdc -ext:fdc:wd17xx:0 525qd -flop1 $(DSK)
 
-run-c: $(CDSK)
-	$(MAME) $(MACHINE) -skip_gameinfo -autoboot_delay 5 -autoboot_command 'DOS\n' -ext fdc -ext:fdc:wd17xx:0 525qd -flop1 $(CDSK)
+run-c: $(DSK)
+	$(MAME) $(MACHINE) -skip_gameinfo -autoboot_delay 5 -autoboot_command 'DOS\n' -ext fdc -ext:fdc:wd17xx:0 525qd -flop1 $(DSK)
 
 clean:
-	rm -f $(TARGET) $(DSK) $(CTARGET) $(CDSK) *.list *.map
+	rm -f $(TARGET) $(DSK) $(CTARGET) *.list *.map
